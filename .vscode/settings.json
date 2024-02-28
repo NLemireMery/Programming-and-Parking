@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Programming and Parking.sln"
+    "dotnet.defaultSolution": "Programming-and-Parking.sln"
 }
