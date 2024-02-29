@@ -10,6 +10,9 @@ public class BaseVehicle : MonoBehaviour
     float turnSpeed;
     float horizontalInput;
     float forwardInput;
+    float xRange = 5.5f;
+    float topBound = 5f;
+    float bottomBound = -3f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +37,24 @@ public class BaseVehicle : MonoBehaviour
 
         /* Turn and move the vehicle right/left */
         transform.Rotate(Vector3.forward, Time.deltaTime * turnSpeed * horizontalInput);
+
+        /* Bound the vehicle to the parking area */
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
+        if(transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+        if (transform.position.y < bottomBound)
+        {
+            transform.position = new Vector3(transform.position.x, bottomBound, transform.position.z);
+        }
+        if(transform.position.y > topBound)
+        {
+            transform.position = new Vector3(transform.position.x, topBound, transform.position.z);
+        }
     }
+
 }
